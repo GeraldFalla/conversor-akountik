@@ -1,1 +1,0 @@
-Akountik v6.8.2: ajuste del lector Davivienda existente para extractos internacionales. Reconocimiento por estructura de saldo anterior, totales DB/CR y cargos por sobregiro; clasificación por variación del saldo. No modifica lectores de Itaú, Citi, BBVA ni otros bancos.
