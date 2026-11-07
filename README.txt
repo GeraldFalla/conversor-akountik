@@ -1,1 +1,0 @@
-Akountik v6.8.3 – lector nuevo Ficohsa Panamá. Procesa columnas Fecha, Descripción, Débito, Crédito y Balance; reúne descripciones multilínea y excluye el balance, saldos inicial/final y totales. Los demás lectores se conservan desde v6.8.2. Validar siempre contra el extracto original.
