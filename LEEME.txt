@@ -1,0 +1,34 @@
+Akountik v6.8.33 - Reconocimiento de formato Bankinter
+
+Agrega reconocimiento de consultas Bankinter EUR/USD. Cuando el PDF contiene el mensaje NO SE HAN ENCONTRADO RESULTADOS, lo registra como consulta válida sin movimientos, sin crear filas falsas ni elementos para revisar. Conserva tipo de cuenta, IBAN y saldo como datos de control en el diagnóstico y estado por archivo. No agrega todavía un lector transaccional; requiere un extracto con movimientos para construir y validar esa parte. Los demás lectores se conservan desde v6.8.32.
+
+
+HUB Extractos v7 - actualización visual corporativa basada en v6.8.33 Bankinter. Se modificaron únicamente título, encabezado, estilos, sección Acerca de y crédito de autor. La lógica de procesamiento se conserva.
+
+
+Corrección v2 (10/11/2026): se corrigió la sintaxis JavaScript del ajuste de fechas Citibank. Se eliminaron secuencias de salto de línea literales y se normalizó la expresión regular. El cambio permanece limitado al lector Citibank.
+
+Corrección BBP Bank (noviembre 2026):
+- El lector procesa únicamente las tablas CREDITOS y DEBITOS; excluye SALDOS DIARIOS.
+- Interpreta la fecha del banco en formato MM/DD y la convierte a DD/MM/YYYY.
+- Mantiene la descripción separada de la referencia de la columna DETALLE.
+- Validación de regresión con el extracto BBP de octubre de 2026: 2 créditos (9,764.64 y 3,857.38 USD), 0 débitos; total créditos 13,622.02 USD.
+
+
+Ajuste Citibank Colombia Cycle Statement (Motorola): se corrige el recorte de descripción para no mezclar importes/saldos, y se normaliza fecha estadounidense MM/DD/YY a DD/MM/YYYY. El ajuste está limitado a este lector; se conserva el exportador Akountik.
+
+
+AJUSTE WELLS FARGO (noviembre 2026): el lector interpreta fechas MM/DD del extracto Everyday Checking como DD/MM/YYYY en la salida y clasifica "Zelle From" como crédito. Se conserva el formato de exportación y el resto de lectores.
+
+AJUSTE WELLS FARGO (lector v2)
+- Se corrige la conversión de fechas del estado Wells Fargo Everyday Checking: MM/DD a DD/MM/YYYY.
+- Se clasifica "Zelle From" como crédito recibido (sin alterar los demás criterios de clasificación).
+- Se mantiene intacto el exportador de cinco columnas compatible con Akountik.
+- Validación con EXTRACTO OCTUBRE 2026.pdf: 15 movimientos, débitos USD 91,900.49 y créditos USD 1.00.
+
+
+AJUSTE ZIONS BANK (octubre 2026)
+- El lector parseZions procesa únicamente la sección TRANSACTIONS y se detiene antes de CHECKS PROCESSED.
+- Convierte fechas MM/DD a DD/MM/YYYY.
+- Clasifica el importe con guion final como débito y el importe sin guion como crédito.
+- Extrae el consecutivo BOOK/XFER como referencia sin alterar el exportador general.
